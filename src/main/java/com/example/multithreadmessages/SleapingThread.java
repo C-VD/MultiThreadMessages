@@ -1,5 +1,7 @@
 package com.example.multithreadmessages;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class SleapingThread extends Thread{
@@ -19,10 +21,13 @@ public class SleapingThread extends Thread{
             sleepTime = random.nextInt(100, 500);
             try{
                 sleep(sleepTime);
-            }catch(InterruptedException e){
+                }catch(InterruptedException e){
                 System.out.println("interrupted");
             }
-            System.out.println("Thread " + number + "; Message " + i);
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+            Date date = new Date();
+            String currentTime = formatter.format(date);
+            System.out.println("Time " + currentTime + "; Thread " + number + "; Message " + i);
         }
     }
 }
