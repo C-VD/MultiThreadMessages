@@ -16,8 +16,12 @@ public class SleapingThread extends Thread{
         Random random = new Random();
         int sleepTime;
         for (int i = 0; i < nMessages; i++) {
-            random.nextInt(100, 500);
-            sleep(sleepTime);
+            sleepTime = random.nextInt(100, 500);
+            try{
+                sleep(sleepTime);
+            }catch(InterruptedException e){
+                System.out.println("interrupted");
+            }
             System.out.println("Thread " + number + "; Message " + i);
         }
     }
